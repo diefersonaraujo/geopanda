@@ -1,0 +1,258 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #1a1a2e;
+    color: #e0e0e0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#app {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar */
+#sidebar {
+    width: 320px;
+    background: #16213e;
+    border-right: 1px solid #0f3460;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.sidebar-header {
+    padding: 20px;
+    background: linear-gradient(135deg, #0f3460, #533483);
+    text-align: center;
+}
+
+.sidebar-header h1 {
+    font-size: 1.3rem;
+    color: #e94560;
+    margin-bottom: 4px;
+}
+
+.sidebar-header .subtitle {
+    font-size: 0.75rem;
+    color: #a0a0c0;
+}
+
+.sidebar-section {
+    padding: 15px 20px;
+    border-bottom: 1px solid #0f3460;
+}
+
+.sidebar-section h3 {
+    font-size: 0.85rem;
+    color: #e94560;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.filter-group {
+    margin-bottom: 10px;
+}
+
+.filter-group label {
+    display: block;
+    font-size: 0.8rem;
+    color: #a0a0c0;
+    margin-bottom: 4px;
+}
+
+.filter-group select,
+.filter-group input[type="text"] {
+    width: 100%;
+    padding: 8px 10px;
+    background: #1a1a2e;
+    border: 1px solid #0f3460;
+    border-radius: 4px;
+    color: #e0e0e0;
+    font-size: 0.85rem;
+}
+
+.filter-group select:focus,
+.filter-group input[type="text"]:focus {
+    outline: none;
+    border-color: #e94560;
+}
+
+.filter-group input[type="range"] {
+    width: 100%;
+    accent-color: #e94560;
+}
+
+.search-box {
+    display: flex;
+    gap: 6px;
+}
+
+.search-box input {
+    flex: 1;
+}
+
+.search-box button {
+    padding: 8px 12px;
+    background: #e94560;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.search-box button:hover {
+    background: #c73a52;
+}
+
+/* Layer controls */
+.layer-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    margin-bottom: 4px;
+    background: #1a1a2e;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.layer-toggle:hover {
+    background: #0f3460;
+}
+
+.layer-toggle input[type="checkbox"] {
+    accent-color: #e94560;
+}
+
+.layer-toggle .layer-name {
+    flex: 1;
+    font-size: 0.85rem;
+}
+
+.layer-toggle .layer-count {
+    font-size: 0.7rem;
+    color: #a0a0c0;
+}
+
+/* Feature info */
+#feature-details {
+    font-size: 0.8rem;
+    line-height: 1.6;
+}
+
+#feature-details .prop-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    border-bottom: 1px solid #0f3460;
+}
+
+#feature-details .prop-key {
+    color: #a0a0c0;
+    font-weight: 500;
+}
+
+#feature-details .prop-value {
+    color: #e0e0e0;
+    text-align: right;
+    max-width: 55%;
+    word-break: break-word;
+}
+
+/* Map */
+#map-container {
+    flex: 1;
+    position: relative;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+/* Loading overlay */
+#loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(26, 26, 46, 0.85);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    color: #e0e0e0;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #0f3460;
+    border-top: 4px solid #e94560;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Sidebar footer */
+.sidebar-footer {
+    padding: 15px 20px;
+    margin-top: auto;
+    font-size: 0.7rem;
+    color: #606080;
+    text-align: center;
+}
+
+/* Leaflet customizations */
+.leaflet-popup-content-wrapper {
+    background: #16213e;
+    color: #e0e0e0;
+    border-radius: 8px;
+    border: 1px solid #0f3460;
+}
+
+.leaflet-popup-tip {
+    background: #16213e;
+}
+
+.leaflet-popup-content {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.leaflet-popup-content strong {
+    color: #e94560;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #sidebar {
+        width: 280px;
+        position: absolute;
+        left: -280px;
+        transition: left 0.3s;
+        z-index: 2000;
+    }
+
+    #sidebar.open {
+        left: 0;
+    }
+}

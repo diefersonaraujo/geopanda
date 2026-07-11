@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}GeoPanda SIG — Mapa{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        initMap();
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+geopandas
+shapely
+fiona
+pyproj
+sqlalchemy[asyncio]
+geoalchemy2
+asyncpg
+psycopg2-binary
+python-dotenv
+jinja2
+httpx
+requests

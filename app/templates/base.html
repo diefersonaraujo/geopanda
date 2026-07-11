@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}GeoPanda SIG{% endblock %}</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <div id="app">
+        <aside id="sidebar">
+            <div class="sidebar-header">
+                <h1><i class="fas fa-globe-americas"></i> GeoPanda SIG</h1>
+                <p class="subtitle">Sistema de Informação Geográfica</p>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Camadas</h3>
+                <div id="layer-controls"></div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Filtros</h3>
+                <div class="filter-group">
+                    <label for="state-filter">Estado:</label>
+                    <select id="state-filter">
+                        <option value="">Todos</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="search-input">Buscar município:</label>
+                    <div class="search-box">
+                        <input type="text" id="search-input" placeholder="Nome do município..." />
+                        <button id="search-btn" title="Buscar"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Visualização</h3>
+                <div class="filter-group">
+                    <label for="theme-select">Tema:</label>
+                    <select id="theme-select">
+                        <option value="default">Padrão</option>
+                        <option value="populacao">População</option>
+                        <option value="area">Área (km²)</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="opacity-slider">Opacidade:</label>
+                    <input type="range" id="opacity-slider" min="0.1" max="1" step="0.1" value="0.7" />
+                </div>
+            </div>
+
+            <div class="sidebar-section" id="feature-info" style="display:none;">
+                <h3>Informações</h3>
+                <div id="feature-details"></div>
+            </div>
+
+            <div class="sidebar-footer">
+                <p>Dados: IBGE Malha Territorial</p>
+                <p>Fonte: GeoPandas + PostGIS + Leaflet</p>
+            </div>
+        </aside>
+
+        <main id="map-container">
+            <div id="map"></div>
+            <div id="loading-overlay" style="display:none;">
+                <div class="spinner"></div>
+                <p>Carregando dados...</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+    <script src="/static/js/map.js"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
